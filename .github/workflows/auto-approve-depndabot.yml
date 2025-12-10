@@ -39,12 +39,12 @@ jobs:
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Add a label if update type is null
-        if: steps.metadata.outputs.update-type == null
-        run: gh pr edit "$PR_URL" --add-label "no-semver"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+#      - name: Add a label if update type is null
+#        if: steps.metadata.outputs.update-type == null
+#        run: gh pr edit "$PR_URL" --add-label "no-semver"
+#        env:
+#          PR_URL: ${{github.event.pull_request.html_url}}
+#          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Auto approve a PR if update is minor or patch
         if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
         run: gh pr review --approve "$PR_URL"
