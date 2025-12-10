@@ -1,4 +1,4 @@
-name: Dependabot PR auto-merge
+name: Dependabot PR automations
 # yamllint disable-line rule:truthy
 on: pull_request
 
