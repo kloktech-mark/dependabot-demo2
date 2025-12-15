@@ -53,7 +53,7 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Auto-merge for Dependabot PRs if update is minor or patch
-        if: *minor_patch_cond
+        if: *minor_patch_cond && steps.metadata.outputs.dependency-names != 'hashicorp/aws')
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
